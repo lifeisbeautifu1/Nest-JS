@@ -7,14 +7,17 @@ import { SerializedUser, User } from 'src/users/types';
 export class UsersService {
   private users: User[] = [
     {
+      id: 1,
       fullName: 'harry',
       password: 'harry',
     },
     {
+      id: 2,
       fullName: 'bob',
       password: 'bob',
     },
     {
+      id: 3,
       fullName: 'john',
       password: 'john',
     },
@@ -24,5 +27,8 @@ export class UsersService {
   }
   getUserByFullName(fullName: string) {
     return this.users.find((user) => user.fullName === fullName);
+  }
+  getUserById(id: number) {
+    return this.users.find((user) => user.id === id);
   }
 }
