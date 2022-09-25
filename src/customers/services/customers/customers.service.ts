@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreateCustomerDto } from 'src/customers/dtos/CreateCustomer.dot';
+import { CreateCustomerDto } from 'src/customers/dtos/CreateCustomer.dto';
 import { Customer } from 'src/customers/types/Customer';
 
 @Injectable()

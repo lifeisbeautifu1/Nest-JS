@@ -6,8 +6,13 @@ import {
   HttpStatus,
   Param,
   ParseIntPipe,
+  Post,
+  Body,
   UseInterceptors,
+  ValidationPipe,
+  UsePipes,
 } from '@nestjs/common';
+import { CreateUserDto } from 'src/users/dtos/CreateUser.dto';
 import { UserNotFoundException } from 'src/users/exceptions/UserNotFound.exception';
 import { UsersService } from 'src/users/services/users/users.service';
 import { SerializedUser } from 'src/users/types';
@@ -36,5 +41,11 @@ export class UsersController {
     const user = this.usersService.getUserById(id);
     if (user) return new SerializedUser(user);
     else throw new UserNotFoundException();
+  }
+
+  @Post('/')
+  @UsePipes(ValidationPipe)
+  createUser(@Body() createUserDto: CreateUserDto) {
+    return this.usersService.createUser(createUserDto);
   }
 }
