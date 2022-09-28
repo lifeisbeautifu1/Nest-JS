@@ -33,4 +33,11 @@ export class UsersService {
     const user = this.userRepository.findOne({ where: { username } });
     return user;
   }
+  findUserById(id: string) {
+    return this.userRepository.findOne({
+      where: {
+        id,
+      },
+    });
+  }
 }
